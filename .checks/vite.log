@@ -1,0 +1,69 @@
+
+> react-vite-tailwind@0.0.0 dev
+> vite --host 0.0.0.0
+
+
+  VITE v7.3.2  ready in 367 ms
+
+  ➜  Local:   http://localhost:5173/
+  ➜  Network: http://169.254.0.21:5173/
+9:13:36 PM [vite] (client) Pre-transform error: Failed to resolve import "./assets/projects/binec-3d.png" from "src/data.ts". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /home/user/sandbox/src/data.ts:2:25
+  1  |  import studioShot from "./assets/rollercoaster.jpg";
+  2  |  import binec3dCover from "./assets/projects/binec-3d.png";
+     |                            ^
+  3  |  import modeling3dCover from "./assets/projects/modelado-3d.jpg";
+  4  |  import nobody3dCover from "./assets/projects/nobody-3d.jpg";
+9:13:36 PM [vite] (client) Pre-transform error: Failed to resolve import "./assets/projects/binec-3d.png" from "src/data.ts". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /home/user/sandbox/src/data.ts:2:25
+  1  |  import studioShot from "./assets/rollercoaster.jpg";
+  2  |  import binec3dCover from "./assets/projects/binec-3d.png";
+     |                            ^
+  3  |  import modeling3dCover from "./assets/projects/modelado-3d.jpg";
+  4  |  import nobody3dCover from "./assets/projects/nobody-3d.jpg";
+9:13:36 PM [vite] (client) Pre-transform error: Failed to resolve import "./assets/projects/binec-3d.png" from "src/data.ts". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /home/user/sandbox/src/data.ts:2:25
+  1  |  import studioShot from "./assets/rollercoaster.jpg";
+  2  |  import binec3dCover from "./assets/projects/binec-3d.png";
+     |                            ^
+  3  |  import modeling3dCover from "./assets/projects/modelado-3d.jpg";
+  4  |  import nobody3dCover from "./assets/projects/nobody-3d.jpg";
+9:13:36 PM [vite] (client) Pre-transform error: Failed to resolve import "./assets/projects/binec-3d.png" from "src/data.ts". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /home/user/sandbox/src/data.ts:2:25
+  1  |  import studioShot from "./assets/rollercoaster.jpg";
+  2  |  import binec3dCover from "./assets/projects/binec-3d.png";
+     |                            ^
+  3  |  import modeling3dCover from "./assets/projects/modelado-3d.jpg";
+  4  |  import nobody3dCover from "./assets/projects/nobody-3d.jpg";
+9:13:36 PM [vite] (client) Pre-transform error: Failed to resolve import "./assets/projects/binec-3d.png" from "src/data.ts". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /home/user/sandbox/src/data.ts:2:25
+  1  |  import studioShot from "./assets/rollercoaster.jpg";
+  2  |  import binec3dCover from "./assets/projects/binec-3d.png";
+     |                            ^
+  3  |  import modeling3dCover from "./assets/projects/modelado-3d.jpg";
+  4  |  import nobody3dCover from "./assets/projects/nobody-3d.jpg";
+9:13:39 PM [vite] Internal server error: Failed to resolve import "./assets/projects/binec-3d.png" from "src/data.ts". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /home/user/sandbox/src/data.ts:2:25
+  1  |  import studioShot from "./assets/rollercoaster.jpg";
+  2  |  import binec3dCover from "./assets/projects/binec-3d.png";
+     |                            ^
+  3  |  import modeling3dCover from "./assets/projects/modelado-3d.jpg";
+  4  |  import nobody3dCover from "./assets/projects/nobody-3d.jpg";
+      at TransformPluginContext._formatLog (file:///home/user/sandbox/node_modules/vite/dist/node/chunks/config.js:29003:43)
+      at TransformPluginContext.error (file:///home/user/sandbox/node_modules/vite/dist/node/chunks/config.js:29000:14)
+      at normalizeUrl (file:///home/user/sandbox/node_modules/vite/dist/node/chunks/config.js:27123:18)
+      at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+      at async file:///home/user/sandbox/node_modules/vite/dist/node/chunks/config.js:27181:32
+      at async Promise.all (index 1)
+      at async TransformPluginContext.transform (file:///home/user/sandbox/node_modules/vite/dist/node/chunks/config.js:27149:4)
+      at async EnvironmentPluginContainer.transform (file:///home/user/sandbox/node_modules/vite/dist/node/chunks/config.js:28801:14)
+      at async loadAndTransform (file:///home/user/sandbox/node_modules/vite/dist/node/chunks/config.js:22670:26)
+      at async viteTransformMiddleware (file:///home/user/sandbox/node_modules/vite/dist/node/chunks/config.js:24546:20)
+9:13:55 PM [vite] (client) hmr update /src/components/Clients.tsx, /src/components/Work.tsx, /src/components/ImageReveal.tsx, /src/components/Contact.tsx, /src/components/BehanceGallery.tsx
+9:14:36 PM [vite] (client) hmr update /src/index.css

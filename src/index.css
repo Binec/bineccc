@@ -1,0 +1,174 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Syne", sans-serif;
+  --font-sans: "Inter", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  /* Ciruela · Violeta — single brand palette */
+  --color-bone: #342D34;
+  --color-ink: #F3EFF2;
+  --color-panel: #29232A;
+  --color-surface: #443B46;
+  --color-lime: #E53633;
+  --color-on-accent: #FFFFFF;
+  --color-accent-alt: #7873DA;
+  --color-flame: #FF837A;
+  --color-smoke: #C2B9C4;
+}
+
+html {
+  scroll-behavior: smooth;
+  color-scheme: dark;
+}
+
+body {
+  background: var(--color-bone);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: var(--color-lime);
+  color: var(--color-on-accent);
+}
+
+/* Infinite marquee */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.animate-marquee {
+  animation: marquee 40s linear infinite;
+}
+
+@keyframes hero-drift {
+  from { transform: scale(1.08); }
+  to { transform: scale(1.16); }
+}
+.hero-video {
+  animation: hero-drift 22s ease-in-out infinite alternate;
+}
+
+/* ── BINEC sphere logo with orbiting text ring ── */
+.binec-logo {
+  --s: 84px;
+  position: relative;
+  display: block;
+  width: var(--s);
+  height: var(--s);
+  perspective: calc(var(--s) * 7);
+}
+@media (min-width: 768px) {
+  .binec-logo { --s: 108px; }
+}
+.binec-logo__tilt {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+  transform: rotateZ(-16deg) rotateX(-22deg);
+}
+.binec-logo__sphere {
+  position: absolute;
+  width: calc(var(--s) * 0.54);
+  height: calc(var(--s) * 0.54);
+  left: calc(50% - var(--s) * 0.27);
+  top: calc(50% - var(--s) * 0.27);
+  border-radius: 50%;
+  /* undo the tilt so the sphere always faces the viewer as a perfect circle */
+  transform: rotateX(22deg);
+  background:
+    radial-gradient(circle at 70% 78%, rgb(120 115 218 / 0.55), transparent 42%),
+    radial-gradient(circle at 34% 28%, #ffd9d0 0%, #ff8a76 12%, #e53633 40%, #8c1d33 74%, #2e1020 100%);
+  box-shadow:
+    inset calc(var(--s) * -0.05) calc(var(--s) * -0.06) calc(var(--s) * 0.12) rgb(18 8 20 / 0.55),
+    0 calc(var(--s) * 0.08) calc(var(--s) * 0.2) calc(var(--s) * -0.06) rgb(229 54 51 / 0.65);
+  transition: filter 400ms ease;
+}
+.binec-logo__shine {
+  position: absolute;
+  width: 26%;
+  height: 20%;
+  left: 24%;
+  top: 16%;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgb(255 255 255 / 0.85), transparent);
+  transform: rotate(-30deg);
+}
+.binec-logo__ring {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+  animation: binec-orbit 14s linear infinite;
+}
+.binec-logo__glyph {
+  position: absolute;
+  width: calc(var(--s) * 0.12);
+  height: calc(var(--s) * 0.2);
+  left: calc(50% - var(--s) * 0.06);
+  top: calc(50% - var(--s) * 0.1);
+  display: grid;
+  place-items: center;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: calc(var(--s) * 0.125);
+  line-height: 1;
+  color: #fff6f4;
+  text-shadow: 0 0 2px rgb(41 35 42 / 0.9);
+  backface-visibility: hidden;
+  transform: rotateY(var(--a)) translateZ(calc(var(--s) * 0.42));
+}
+/* inward-facing copy: shows the back half of the ring dimmed, without mirrored letters */
+.binec-logo__glyph--back {
+  color: #c2b9c4;
+  opacity: 0.45;
+  transform: rotateY(var(--a)) translateZ(calc(var(--s) * 0.42)) rotateY(180deg);
+}
+a:hover .binec-logo__sphere,
+a:focus-visible .binec-logo__sphere { filter: brightness(1.15) saturate(1.1); }
+@keyframes binec-orbit {
+  to { transform: rotateY(-360deg); }
+}
+
+/* Soft edge fade for marquee */
+.fade-x {
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent);
+  mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent);
+}
+
+/* Autofill on dark inputs */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+  -webkit-text-fill-color: #fff;
+  caret-color: #fff;
+  transition: background-color 9999s ease-in-out 0s;
+}
+
+input:focus,
+textarea:focus,
+button:focus {
+  outline: none;
+}
+
+:focus-visible {
+  outline: 1px solid var(--color-lime);
+  outline-offset: 4px;
+}
+
+/* Minimal scrollbar */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--color-bone); }
+::-webkit-scrollbar-thumb { background: color-mix(in srgb, var(--color-ink) 35%, transparent); border-radius: 99px; }
+::-webkit-scrollbar-thumb:hover { background: var(--color-accent-alt); }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .animate-marquee { animation: none; }
+  .hero-video { animation: none; }
+  .binec-logo__ring { animation: none; }
+}
