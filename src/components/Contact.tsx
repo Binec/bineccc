@@ -16,6 +16,7 @@ type FormState = { name: string; email: string; service: string; message: string
 type Errors = Partial<Record<"name" | "email" | "message", string>>;
 
 const MAX = 400;
+const FORMSPREE_URL = "https://formspree.io/f/xoejpeya";
 
 function Field({
   id,
@@ -98,7 +99,7 @@ export default function Contact() {
   const { t, lang } = useLang();
   const [form, setForm] = useState<FormState>({ name: "", email: "", service: "", message: "" });
   const [errors, setErrors] = useState<Errors>({});
-  const [status, setStatus] = useState<"idle" | "sending" | "sent">("idle");
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
 
   // keep default service in sync with language (first option)
   const options = t.contact.options as unknown as string[];
@@ -118,11 +119,26 @@ export default function Contact() {
     return Object.keys(e).length === 0;
   };
 
-  const onSubmit = (ev: FormEvent) => {
+  const onSubmit = async (ev: FormEvent) => {
     ev.preventDefault();
     if (!validate()) return;
     setStatus("sending");
-    setTimeout(() => setStatus("sent"), 1500);
+    try {
+      const res = await fetch(FORMSPREE_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          name: form.name.trim(),
+          email: form.email.trim(),
+          servicio: currentService,
+          message: form.message.trim(),
+          _subject: `Nuevo mensaje de ${form.name.trim()} — ${currentService}`,
+        }),
+      });
+      setStatus(res.ok ? "sent" : "error");
+    } catch {
+      setStatus("error");
+    }
   };
 
   const reset = () => {
@@ -314,6 +330,18 @@ export default function Contact() {
                     </span>
                   </div>
                 </div>
+
+                {status === "error" && (
+                  <p
+                    role="alert"
+                    className="mt-6 flex items-center gap-1.5 text-[13px] text-flame"
+                  >
+                    <CircleAlert className="h-3.5 w-3.5 shrink-0" />
+                    {lang === "es"
+                      ? "No se pudo enviar. Intenta de nuevo o escríbenos por WhatsApp."
+                      : "Could not send. Please try again or message us on WhatsApp."}
+                  </p>
+                )}
 
                 <div className="mt-7 flex flex-col-reverse items-start gap-6 sm:flex-row sm:items-center sm:justify-between">
                   <p className="text-xs font-light text-white/40">{t.contact.noSpam}</p>
