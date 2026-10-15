@@ -5,6 +5,7 @@ import { SectionLabel, ease } from "./ui";
 import { useLang } from "../i18n";
 import {
   BEHANCE_URL,
+  CONTACT_EMAIL,
   WHATSAPP_DISPLAY,
   WHATSAPP_URL_ES,
   WHATSAPP_URL_EN,
@@ -154,8 +155,8 @@ export default function Contact() {
           <p className="mt-8 max-w-sm text-[15px] font-light leading-relaxed text-white/55">{t.contact.subtitle}</p>
           <div className="mt-12 space-y-3 text-sm">
             <div>
-              <a href="mailto:hola@bineccc.com" className="group relative inline-block">
-                hola@bineccc.com
+              <a href={`mailto:${CONTACT_EMAIL}`} className="group relative inline-block">
+                {CONTACT_EMAIL}
                 <span className="absolute -bottom-1 left-0 h-px w-full origin-right bg-lime transition-transform duration-500 group-hover:scale-x-0" />
               </a>
             </div>

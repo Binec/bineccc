@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { ease } from "./ui";
 import { LangToggle, useLang } from "../i18n";
+import { CONTACT_EMAIL } from "../data";
 import BinecLogo from "./BinecLogo";
 
 const mtyTime = () =>
@@ -122,7 +123,9 @@ export default function Header() {
               ))}
             </nav>
             <div className="flex justify-between font-mono text-[11px] uppercase tracking-[0.15em] text-white/50">
-              <span>hola@bineccc.com</span>
+              <a href={`mailto:${CONTACT_EMAIL}`} className="transition-colors hover:text-white">
+                {CONTACT_EMAIL}
+              </a>
               <span>MTY {time}</span>
             </div>
           </motion.div>

@@ -143,6 +143,9 @@ export type BehanceProject = {
 export const BEHANCE_URL = "https://www.behance.net/binec";
 export const BEHANCE_HANDLE = "behance.net/binec";
 
+/** Single contact email used across the landing page. */
+export const CONTACT_EMAIL = "hola@bineccc.com";
+
 export const WHATSAPP_PHONE = "5533313935";
 export const WHATSAPP_PHONE_INTL = "5215533313935";
 export const WHATSAPP_DISPLAY = "55 3331 3935";
