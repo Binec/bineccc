@@ -105,7 +105,7 @@ export default function BehanceGallery() {
           </div>
         </div>
 
-        {/* 4 Projects Grid (only 2nd row) */}
+        {/* Desktop: 4 projects (2nd Behance row). Mobile: first 3 only. */}
         <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
           {behanceProjects.map((project, i) => (
             <motion.article
@@ -114,7 +114,7 @@ export default function BehanceGallery() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-40px" }}
               transition={{ duration: 0.7, delay: (i % 4) * 0.08, ease }}
-              className="relative min-w-0"
+              className={`relative min-w-0 ${i >= 3 ? "hidden sm:block" : ""}`}
             >
               <a
                 href={project.url}
