@@ -20,9 +20,10 @@ export default function FloatingWhatsApp() {
         target="_blank"
         rel="noopener noreferrer"
         aria-label={`${t.whatsapp.directChat}: 55 3331 3935. ${t.behance.newTab}`}
-        className="group inline-flex items-center gap-4 rounded-full bg-lime py-2 pl-6 pr-2 text-sm font-medium text-on-accent shadow-xl shadow-black/25 transition-all duration-300 hover:brightness-110 active:scale-[0.97] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-lime"
+        className="group inline-flex items-center gap-4 rounded-full bg-lime py-1.5 pl-1.5 pr-1.5 text-sm font-medium text-on-accent shadow-xl shadow-black/25 transition-all duration-300 hover:brightness-110 active:scale-[0.97] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-lime sm:py-2 sm:pl-6 sm:pr-2"
       >
-        <span className="flex flex-col text-left leading-tight">
+        {/* mobile: icon-only · desktop: full CTA pill */}
+        <span className="hidden flex-col text-left leading-tight sm:flex">
           <span>{t.whatsapp.chatPrompt}</span>
           <span className="font-mono text-[10px] leading-tight opacity-75">55 3331 3935</span>
         </span>
