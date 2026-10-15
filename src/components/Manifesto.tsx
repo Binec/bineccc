@@ -2,6 +2,7 @@ import { useRef } from "react";
 import { motion, useScroll, useTransform, type MotionValue } from "framer-motion";
 import { Line, Reveal, SectionLabel } from "./ui";
 import { useLang } from "../i18n";
+import FormCta from "./FormCta";
 
 function Word({
   children,
@@ -62,6 +63,12 @@ export default function Manifesto() {
           </Reveal>
         ))}
       </div>
+
+      <FormCta
+        text={t.ctas.valuesText}
+        label={t.ctas.valuesLabel}
+        className="mx-auto mt-20 max-w-[1400px] md:mt-28"
+      />
     </section>
   );
 }

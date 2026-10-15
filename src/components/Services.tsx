@@ -2,6 +2,7 @@ import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Reveal, SectionLabel, ease } from "./ui";
 import { useLang } from "../i18n";
+import FormCta from "./FormCta";
 
 type Svc = { title: string; text: string; tags: string[] };
 
@@ -72,6 +73,12 @@ export function Services() {
               );
             })}
           </div>
+
+          <FormCta
+            text={t.ctas.servicesText}
+            label={t.ctas.servicesLabel}
+            className="mt-14 md:mt-16"
+          />
         </div>
       </div>
     </section>
