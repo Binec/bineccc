@@ -31,9 +31,9 @@ const dict = {
     studio: { left: "Design is respect — 01", right: "BINEC", alt: "BINEC coaster illustration" },
     ctas: {
       valuesText: "Share these values? Tell us about your project and let's build it together.",
-      valuesLabel: "Fill out the form",
+      valuesLabel: "Contact us and get a quote",
       servicesText: "Not sure which service you need? Describe your challenge and we'll suggest the right approach.",
-      servicesLabel: "Fill out the form",
+      servicesLabel: "Contact us and get a quote",
     },
     work: {
       label: "Selected work",
@@ -165,9 +165,9 @@ const dict = {
     studio: { left: "Diseñar es respetar — 01", right: "BINEC", alt: "Ilustración BINEC coaster" },
     ctas: {
       valuesText: "¿Compartes estos valores? Cuéntanos tu proyecto y construyámoslo juntos.",
-      valuesLabel: "Llenar formulario",
+      valuesLabel: "Contáctanos y cotiza tu proyecto",
       servicesText: "¿No sabes qué servicio necesitas? Descríbenos tu reto y te proponemos el enfoque adecuado.",
-      servicesLabel: "Llenar formulario",
+      servicesLabel: "Contáctanos y cotiza tu proyecto",
     },
     work: {
       label: "Proyectos destacados",
