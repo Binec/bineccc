@@ -12,8 +12,8 @@ import {
 } from "../data";
 import WhatsAppIcon from "./WhatsAppIcon";
 
-type FormState = { name: string; email: string; service: string; message: string };
-type Errors = Partial<Record<"name" | "email" | "message", string>>;
+type FormState = { name: string; email: string; phone: string; service: string; message: string };
+type Errors = Partial<Record<"name" | "email" | "phone" | "message", string>>;
 
 const MAX = 400;
 const FORMSPREE_URL = "https://formspree.io/f/xoejpeya";
@@ -29,6 +29,7 @@ function Field({
   textarea = false,
   autoComplete,
   maxLength,
+  inputMode,
 }: {
   id: string;
   label: string;
@@ -40,6 +41,7 @@ function Field({
   textarea?: boolean;
   autoComplete?: string;
   maxLength?: number;
+  inputMode?: "text" | "tel" | "email" | "numeric";
 }) {
   const box = `w-full rounded-2xl border bg-white/[0.04] px-5 py-4 text-[15px] font-light text-white placeholder:text-white/30 transition-all duration-300 ${
     error
@@ -70,6 +72,8 @@ function Field({
           type={type}
           placeholder={placeholder}
           autoComplete={autoComplete}
+          inputMode={inputMode}
+          maxLength={maxLength}
           value={value}
           onChange={(e) => onChange(e.target.value)}
           aria-invalid={!!error}
@@ -97,7 +101,7 @@ function Field({
 
 export default function Contact() {
   const { t, lang } = useLang();
-  const [form, setForm] = useState<FormState>({ name: "", email: "", service: "", message: "" });
+  const [form, setForm] = useState<FormState>({ name: "", email: "", phone: "", service: "", message: "" });
   const [errors, setErrors] = useState<Errors>({});
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
 
@@ -114,6 +118,12 @@ export default function Contact() {
     const e: Errors = {};
     if (!form.name.trim()) e.name = t.contact.errName;
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email.trim())) e.email = t.contact.errEmail;
+    // Teléfono opcional: si se llena, debe tener entre 7 y 15 dígitos.
+    // Para hacerlo obligatorio, quita la condición `form.phone.trim() &&`.
+    const phoneDigits = form.phone.replace(/\D/g, "");
+    if ((phoneDigits.length < 7 || phoneDigits.length > 15 || !/^[+\d\s()-]+$/.test(form.phone.trim()))) {
+      e.phone = lang === "es" ? "Añade un teléfono válido" : "Please add a valid phone number";
+    }
     if (form.message.trim().length < 10) e.message = t.contact.errMsg;
     setErrors(e);
     return Object.keys(e).length === 0;
@@ -130,6 +140,7 @@ export default function Contact() {
         body: JSON.stringify({
           name: form.name.trim(),
           email: form.email.trim(),
+          telefono: form.phone.trim(),
           servicio: currentService,
           message: form.message.trim(),
           _subject: `Nuevo mensaje de ${form.name.trim()} — ${currentService}`,
@@ -142,7 +153,7 @@ export default function Contact() {
   };
 
   const reset = () => {
-    setForm({ name: "", email: "", service: "", message: "" });
+    setForm({ name: "", email: "", phone: "", service: "", message: "" });
     setErrors({});
     setStatus("idle");
   };
@@ -275,6 +286,21 @@ export default function Contact() {
                     value={form.email}
                     onChange={(v) => update("email", v)}
                     error={errors.email}
+                  />
+                </div>
+
+                <div className="mt-6">
+                  <Field
+                    id="phone"
+                    type="tel"
+                    label={lang === "es" ? "Teléfono" : "Phone"}
+                    placeholder={lang === "es" ? "+52 55 1234 5678" : "+1 555 123 4567"}
+                    autoComplete="tel"
+                    value={form.phone}
+                    onChange={(v) => update("phone", v)}
+                    error={errors.phone}
+                    inputMode="tel"
+                    maxLength={20}
                   />
                 </div>
 
