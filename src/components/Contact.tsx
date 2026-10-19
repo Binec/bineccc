@@ -118,10 +118,10 @@ export default function Contact() {
     const e: Errors = {};
     if (!form.name.trim()) e.name = t.contact.errName;
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email.trim())) e.email = t.contact.errEmail;
-    // Teléfono opcional: si se llena, debe tener entre 7 y 15 dígitos.
-    // Para hacerlo obligatorio, quita la condición `form.phone.trim() &&`.
+    // Teléfono obligatorio: entre 7 y 15 dígitos.
+    // Para hacerlo opcional, usa: if (form.phone.trim() && (...)) { ... }
     const phoneDigits = form.phone.replace(/\D/g, "");
-    if ((phoneDigits.length < 7 || phoneDigits.length > 15 || !/^[+\d\s()-]+$/.test(form.phone.trim()))) {
+    if (phoneDigits.length < 7 || phoneDigits.length > 15 || !/^[+\d\s()-]+$/.test(form.phone.trim())) {
       e.phone = lang === "es" ? "Añade un teléfono válido" : "Please add a valid phone number";
     }
     if (form.message.trim().length < 10) e.message = t.contact.errMsg;
@@ -143,11 +143,18 @@ export default function Contact() {
           telefono: form.phone.trim(),
           servicio: currentService,
           message: form.message.trim(),
-          _subject: `Nuevo mensaje de ${form.name.trim()} — ${currentService}`,
+          _replyto: form.email.trim(),
+          _subject: `Nuevo mensaje de ${form.name.trim()} - ${currentService}`,
         }),
       });
+      if (!res.ok) {
+        // Muestra en consola (F12) el motivo real del rechazo de Formspree
+        const data = await res.json().catch(() => null);
+        console.error("Formspree error:", res.status, data);
+      }
       setStatus(res.ok ? "sent" : "error");
-    } catch {
+    } catch (err) {
+      console.error("Formspree network error:", err);
       setStatus("error");
     }
   };
