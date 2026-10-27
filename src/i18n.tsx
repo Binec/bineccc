@@ -38,7 +38,8 @@ const dict = {
       cta: "View live demo",
       quote: "Quote yours",
       newTab: "Opens in a new tab",
-      visual: "Rotating 3D cube illustrating the 3D catalog",
+      visual: "Interactive 3D cube illustrating the 3D catalog. Drag or use arrow keys to rotate it.",
+      drag: "Drag to rotate",
     },
     ctas: {
       valuesText: "Share these values? Tell us about your project and let's build it together.",
@@ -185,7 +186,8 @@ const dict = {
       cta: "Ver demo en vivo",
       quote: "Cotiza el tuyo",
       newTab: "Se abre en una nueva pestaña",
-      visual: "Cubo 3D giratorio que ilustra el catálogo 3D",
+      visual: "Cubo 3D interactivo que ilustra el catálogo 3D. Arrástralo o usa las flechas para girarlo.",
+      drag: "Arrastra para girar",
     },
     ctas: {
       valuesText: "¿Compartes estos valores? Cuéntanos tu proyecto y construyámoslo juntos.",
