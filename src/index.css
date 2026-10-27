@@ -134,6 +134,54 @@ a:focus-visible .binec-logo__sphere { filter: brightness(1.15) saturate(1.1); }
   to { transform: rotateY(-360deg); }
 }
 
+/* ── 3D catalog banner: rotating cube ── */
+.catalog-scene {
+  --c: 150px;
+  position: relative;
+  width: calc(var(--c) * 2);
+  height: calc(var(--c) * 2);
+  perspective: calc(var(--c) * 6);
+  display: grid;
+  place-items: center;
+}
+@media (min-width: 768px) {
+  .catalog-scene { --c: 170px; }
+}
+.catalog-cube {
+  position: relative;
+  width: var(--c);
+  height: var(--c);
+  transform-style: preserve-3d;
+  animation: catalog-spin 16s linear infinite;
+}
+.catalog-face {
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgb(255 255 255 / 0.35);
+  border-radius: 6px;
+  backface-visibility: hidden;
+}
+.catalog-face--front  { transform: translateZ(calc(var(--c) / 2)); background: linear-gradient(135deg, #ff837a, #e53633); }
+.catalog-face--back   { transform: rotateY(180deg) translateZ(calc(var(--c) / 2)); background: linear-gradient(135deg, #e53633, #8c1d33); }
+.catalog-face--right  { transform: rotateY(90deg) translateZ(calc(var(--c) / 2)); background: linear-gradient(160deg, #7873da, #3a3470); }
+.catalog-face--left   { transform: rotateY(-90deg) translateZ(calc(var(--c) / 2)); background: linear-gradient(160deg, #5f5ab8, #2e2a5c); }
+.catalog-face--top    { transform: rotateX(90deg) translateZ(calc(var(--c) / 2)); background: linear-gradient(135deg, #ffd9d0, #ff837a); }
+.catalog-face--bottom { transform: rotateX(-90deg) translateZ(calc(var(--c) / 2)); background: #29232a; }
+.catalog-shadow {
+  position: absolute;
+  left: 50%;
+  bottom: 4%;
+  width: 60%;
+  height: 12%;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgb(0 0 0 / 0.5), transparent);
+}
+@keyframes catalog-spin {
+  from { transform: rotateX(-24deg) rotateY(0deg); }
+  to { transform: rotateX(-24deg) rotateY(360deg); }
+}
+
 /* Soft edge fade for marquee */
 .fade-x {
   -webkit-mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent);
@@ -171,4 +219,5 @@ button:focus {
   .animate-marquee { animation: none; }
   .hero-video { animation: none; }
   .binec-logo__ring { animation: none; }
+  .catalog-cube { animation: none; transform: rotateX(-24deg) rotateY(-32deg); }
 }

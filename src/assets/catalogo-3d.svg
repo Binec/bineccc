@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 808 632" role="img" aria-label="Catálogo 3D">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="45%" r="75%">
+      <stop offset="0" stop-color="#5a4d5d"/>
+      <stop offset="1" stop-color="#29232A"/>
+    </radialGradient>
+    <linearGradient id="top" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FF837A"/>
+      <stop offset="1" stop-color="#E53633"/>
+    </linearGradient>
+    <linearGradient id="left" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#E53633"/>
+      <stop offset="1" stop-color="#8c1d33"/>
+    </linearGradient>
+    <linearGradient id="right" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#7873DA"/>
+      <stop offset="1" stop-color="#3a3470"/>
+    </linearGradient>
+  </defs>
+  <rect width="808" height="632" fill="url(#bg)"/>
+  <!-- 360° orbit -->
+  <ellipse cx="404" cy="372" rx="300" ry="88" fill="none" stroke="#F3EFF2" stroke-opacity=".28" stroke-width="2" stroke-dasharray="3 10" stroke-linecap="round"/>
+  <ellipse cx="404" cy="468" rx="170" ry="28" fill="#000" fill-opacity=".35"/>
+  <!-- cube -->
+  <polygon points="404,150 566,244 404,338 242,244" fill="url(#top)"/>
+  <polygon points="242,244 404,338 404,516 242,422" fill="url(#left)"/>
+  <polygon points="566,244 404,338 404,516 566,422" fill="url(#right)"/>
+  <polygon points="404,150 566,244 404,338 242,244" fill="none" stroke="#fff" stroke-opacity=".35" stroke-width="2"/>
+  <polyline points="242,244 242,422 404,516 566,422 566,244" fill="none" stroke="#fff" stroke-opacity=".18" stroke-width="2"/>
+  <!-- shine -->
+  <ellipse cx="372" cy="214" rx="46" ry="16" fill="#fff" fill-opacity=".45" transform="rotate(28 372 214)"/>
+  <!-- orbit nodes -->
+  <circle cx="104" cy="372" r="9" fill="#FF837A"/>
+  <circle cx="704" cy="372" r="9" fill="#7873DA"/>
+  <text x="404" y="582" text-anchor="middle" font-family="monospace" font-size="26" letter-spacing="8" fill="#F3EFF2" fill-opacity=".7">360°</text>
+</svg>

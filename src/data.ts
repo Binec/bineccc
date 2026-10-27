@@ -4,7 +4,12 @@ import studioShot from "./assets/rollercoaster.jpg";
 const bh = (file: string, size: 404 | 808 = 404) =>
   `https://mir-s3-cdn-cf.behance.net/projects/${size}/${file}`;
 
-export type ProjectId = "binec3d" | "modeling3d" | "nobody3d" | "uxui" | "uxai" | "rolando";
+import catalogo3dCover from "./assets/catalogo-3d.svg";
+
+export type ProjectId = "catalogo3d" | "binec3d" | "modeling3d" | "nobody3d" | "uxui" | "uxai" | "rolando";
+
+/** Live demo of BINEC's 3D catalog / e-commerce. */
+export const CATALOG_3D_URL = "https://binec.github.io/3Decommerce/";
 
 export type Project = {
   id: ProjectId;
@@ -17,6 +22,14 @@ export type Project = {
 };
 
 export const projects: Project[] = [
+  {
+    id: "catalogo3d",
+    title: "Catálogo 3D / E-commerce",
+    kind: "3d",
+    img: catalogo3dCover,
+    imgLg: catalogo3dCover,
+    url: CATALOG_3D_URL,
+  },
   {
     id: "binec3d",
     title: "BINEC 3D",

@@ -112,6 +112,7 @@ export default function Gallery({
   const total = projects.length;
   const active = projects[Math.min(index, total - 1)];
   const activeCopy = t.work.projects[active.id];
+  const linkLabel = active.id === "catalogo3d" ? g.viewDemo : t.behance.viewOnBehance;
   const progress = useTransform(x, (v) => {
     const span = width * (total - 1);
     return span ? Math.min(Math.max(-v / span, 0), 1) : 0;
@@ -393,12 +394,12 @@ export default function Gallery({
                 href={active.url ?? "#contact"}
                 target={active.url ? "_blank" : undefined}
                 rel={active.url ? "noopener noreferrer" : undefined}
-                aria-label={active.url ? `${t.behance.viewOnBehance}: ${active.title}. ${t.behance.newTab}` : g.view}
+                aria-label={active.url ? `${linkLabel}: ${active.title}. ${t.behance.newTab}` : g.view}
                 onClick={onClose}
                 className="group ml-auto inline-flex shrink-0 items-center gap-2 text-[13px] md:ml-0"
               >
                 <span className="relative hidden lg:inline">
-                  {active.url ? t.behance.viewOnBehance : g.view}
+                  {active.url ? linkLabel : g.view}
                   <span className="absolute -bottom-1 left-0 h-px w-full origin-right scale-x-0 bg-lime transition-transform duration-500 group-hover:origin-left group-hover:scale-x-100" />
                 </span>
                 <span className="grid h-10 w-10 place-items-center rounded-full bg-lime text-on-accent transition-transform duration-500 group-hover:rotate-45">

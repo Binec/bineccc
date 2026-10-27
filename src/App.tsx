@@ -5,6 +5,7 @@ import Hero from "./components/Hero";
 import Clients from "./components/Clients";
 import Manifesto from "./components/Manifesto";
 import ImageReveal from "./components/ImageReveal";
+import CatalogBanner from "./components/CatalogBanner";
 import Work from "./components/Work";
 import { Services } from "./components/Services";
 import Testimonials from "./components/Testimonials";
@@ -31,6 +32,7 @@ export default function App() {
             <Clients />
             <Manifesto />
             <ImageReveal />
+            <CatalogBanner />
             <Work />
             <Services />
             <Testimonials />

@@ -16,9 +16,9 @@ try {
   await page.waitForTimeout(1200);
 
   const rows = page.locator("#featured-project-list > li");
-  await expect(rows).toHaveCount(6);
+  await expect(rows).toHaveCount(7);
   const titles = await rows.locator("button span.font-display").allTextContents();
-  expect(titles).toEqual(["BINEC 3D", "Modelado y animación 3D", "Personaje Nobody", "UX - UI", "ux ai", "Rolando por el poniente"]);
+  expect(titles).toEqual(["Catálogo 3D / E-commerce", "BINEC 3D", "Modelado y animación 3D", "Personaje Nobody", "UX - UI", "ux ai", "Rolando por el poniente"]);
   results.push("6 projects in order: " + titles.join(" | "));
 
   await page.getByRole("button", { name: "Web / UX", exact: true }).click();
@@ -81,7 +81,7 @@ try {
   mobile.on("pageerror", (e) => errors.push(e.message));
   await mobile.goto(base, { waitUntil: "domcontentloaded" });
   await mobile.addStyleTag({ content: "html { scroll-behavior: auto !important; }" });
-  await expect(mobile.locator("#featured-project-list > li")).toHaveCount(6);
+  await expect(mobile.locator("#featured-project-list > li")).toHaveCount(7);
   await expect(mobile.locator("#behance article")).toHaveCount(4);
   await mobile.getByRole("button", { name: "Abrir proyecto: Rolando por el poniente", exact: true }).click();
   await expect(mobile.getByRole("dialog").getByRole("heading", { name: "Rolando por el poniente", exact: true })).toBeVisible();
