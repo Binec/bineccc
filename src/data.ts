@@ -9,7 +9,7 @@ import catalogo3dCover from "./assets/catalogo-3d.svg";
 export type ProjectId = "catalogo3d" | "binec3d" | "modeling3d" | "nobody3d" | "uxui" | "uxai" | "rolando";
 
 /** Live demo of BINEC's 3D catalog / e-commerce. */
-export const CATALOG_3D_URL = "https://binec.github.io/3Decommerce/";
+export const CATALOG_3D_URL = "https://3dapp.bineccc.com/";
 
 export type Project = {
   id: ProjectId;
